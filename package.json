@@ -9,14 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "apexcharts": "^3.45.2",
+    "audit": "^0.0.6",
+    "flatpickr": "^4.6.13",
+    "fund": "^1.0.0",
+    "jsvectormap": "^1.5.3",
+    "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.3"
+    "react-apexcharts": "^1.4.1",
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.3"
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
