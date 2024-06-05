@@ -39,8 +39,8 @@ const TableInvestissement = () => {
           <thead>
             <tr className="bg-gray-100 text-gray-700">
               <th className="px-6 py-4 font-semibold">Entreprise</th>
-              <th className="px-6 py-4 font-semibold">Montant de l'investissement</th>
-              <th className="px-6 py-4 font-semibold">Date de l'investissement</th>
+              <th className="px-6 py-4 font-semibold">Montant de l&apos;investissement</th>
+              <th className="px-6 py-4 font-semibold">Date de l&apos;investissement</th>
               <th className="px-6 py-4 font-semibold">Statut</th>
               <th className="px-6 py-4 font-semibold">Actions</th>
             </tr>
