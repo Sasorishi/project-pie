@@ -1,58 +1,43 @@
-"use client";
-import jsVectorMap from "jsvectormap";
-import "jsvectormap/dist/css/jsvectormap.css";
-import React, { useEffect } from "react";
-import "../../js/us-aea-en";
+import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { LatLngTuple } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
-const MapOne: React.FC = () => {
-  useEffect(() => {
-    const mapOne = new jsVectorMap({
-      selector: "#mapOne",
-      map: "us_aea_en",
-      zoomButtons: true,
+import customMarkerIcon from '/public/images/icon/map-marker.svg'; // Chemin de l'image
 
-      regionStyle: {
-        initial: {
-          fill: "#C8D0D8",
-        },
-        hover: {
-          fillOpacity: 1,
-          fill: "#3056D3",
-        },
-      },
-      regionLabelStyle: {
-        initial: {
-          fontFamily: "Satoshi",
-          fontWeight: "semibold",
-          fill: "#fff",
-        },
-        hover: {
-          cursor: "pointer",
-        },
-      },
+// Création de l'icône personnalisée
+const CustomIcon = L.icon({
+  iconUrl: customMarkerIcon.src, // Utilisez .src pour obtenir l'URL de l'image avec Next.js
+  iconSize: [25, 41], // Ajustez la taille selon vos besoins
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
 
-      labels: {
-        regions: {
-          render(code: string) {
-            return code.split("-")[1];
-          },
-        },
-      },
-    });
-
-    return () => {
-      mapOne.destroy();
-    };
-  }, []);
+const MapOne = () => {
+  const positions: { name: string, position: LatLngTuple }[] = [
+    { name: 'NeuroTech AI', position: [48.8566, 2.3522] },  // Paris, France
+    { name: 'EcoDrive Innovations', position: [51.5074, -0.1278] },  // London, UK
+    { name: 'Quantum Solutions', position: [40.7128, -74.0060] },  // New York, USA
+  ];
 
   return (
-    <div className="col-span-12 rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-7">
-      <h4 className="mb-2 text-xl font-semibold text-black dark:text-white">
-        Region labels
-      </h4>
-      <div className="h-90">
-        <div id="mapOne" className="mapOne map-btn"></div>
-      </div>
+    <div className="p-4 shadow-lg rounded-lg bg-white">
+      <h2 className="text-xl font-semibold mb-4">Répartition Géographique des Entreprises</h2>
+      <MapContainer center={[20, 0] as LatLngTuple} zoom={2} style={{ height: "400px", width: "100%" }}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {positions.map((pos, idx) => (
+          <Marker key={idx} position={pos.position} icon={CustomIcon}>
+            <Popup>
+              {pos.name}
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
     </div>
   );
 };
