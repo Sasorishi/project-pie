@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 // Types
 type Investment = {
+  id: string;
   startupName: string;
   investmentAmount: number;
   investmentDate: string;
@@ -12,18 +13,21 @@ type Investment = {
 // Données fictives
 const investmentsData: Investment[] = [
     {
+      id: "1",
       startupName: "NeuroTech AI",
       investmentAmount: 3000000,
       investmentDate: "20 Fév, 2023",
       investmentStatus: "Actif",
     },
     {
+      id: "2",
       startupName: "EcoDrive Innovations",
       investmentAmount: 1500000,
       investmentDate: "15 Jan, 2024",
       investmentStatus: "En attente",
     },
     {
+      id: "3",
       startupName: "Quantum Solutions",
       investmentAmount: 2500000,
       investmentDate: "11 Mar, 2023",
@@ -61,7 +65,7 @@ const TableInvestissement = () => {
                   </span>
                 </td>
                 <td className="px-6 py-4">
-                  <Link href={`/startups?startupName=${encodeURIComponent(investment.startupName)}`} className="text-blue-500 hover:text-blue-700">
+                  <Link href={`/entreprises?id=${investment.id}`} className="text-blue-500 hover:text-blue-700">
                     Voir
                   </Link>
                 </td>

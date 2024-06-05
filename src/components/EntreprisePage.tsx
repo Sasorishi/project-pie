@@ -6,6 +6,7 @@ import StartupDetails from '@/components/StartupDetails';
 
 const entreprises = [
   {
+    id: "1",
     name: "NeuroTech AI",
     ceo: "Jane Doe",
     email: "contact@neurotech.ai",
@@ -22,6 +23,7 @@ const entreprises = [
     }
   },
   {
+    id: "2",
     name: "EcoDrive Innovations",
     ceo: "Alice Johnson",
     email: "info@ecodrive.com",
@@ -38,6 +40,7 @@ const entreprises = [
     }
   },
   {
+    id: "3",
     name: "Quantum Solutions",
     ceo: "John Smith",
     email: "support@quantumsolutions.com",
@@ -63,9 +66,9 @@ const calculateShareCapital = (growthData: any) => {
 
 const EnteprisePage = () => {
   const searchParams = useSearchParams();
-  const startupName = searchParams.get('startupName'); 
+  const startupId = searchParams.get('id'); 
 
-  const enteprise = entreprises.find(s => s.name === startupName);
+  const enteprise = entreprises.find(s => s.id === startupId);
 
   if (!enteprise) {
     return <div>Startup non trouvée</div>;
