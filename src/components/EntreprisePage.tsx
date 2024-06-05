@@ -4,7 +4,7 @@ import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import StartupDetails from '@/components/StartupDetails';
 
-const startups = [
+const entreprises = [
   {
     name: "NeuroTech AI",
     ceo: "Jane Doe",
@@ -61,20 +61,20 @@ const calculateShareCapital = (growthData: any) => {
   return totalFunding + totalRevenue;
 };
 
-const StartupPage = () => {
+const EnteprisePage = () => {
   const searchParams = useSearchParams();
   const startupName = searchParams.get('startupName'); 
 
-  const startup = startups.find(s => s.name === startupName);
+  const enteprise = entreprises.find(s => s.name === startupName);
 
-  if (!startup) {
+  if (!enteprise) {
     return <div>Startup non trouvée</div>;
   }
 
-  const shareCapital = calculateShareCapital(startup.growthData);
-  const startupWithCapital = { ...startup, shareCapital };
+  const shareCapital = calculateShareCapital(enteprise.growthData);
+  const startupWithCapital = { ...enteprise, shareCapital };
 
   return <StartupDetails startup={startupWithCapital} />;
 };
 
-export default StartupPage;
+export default EnteprisePage;

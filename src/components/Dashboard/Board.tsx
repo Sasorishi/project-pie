@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import TableInvestissement from "../Tables/TableInvestment";
-import StartupPage from "@/app/startups/page";
 
 // Composants de visualisation
 import ChartOne from "../Charts/ChartOne";  // Chart de la performance financière
