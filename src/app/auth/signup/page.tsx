@@ -6,10 +6,11 @@ import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import ClientComponent from "./client";
+import AuthLayout from "@/components/Layouts/AuthLayout";
 
 const SignUpPage = () => {
   return (
-      <DefaultLayout>
+      <AuthLayout>
         <Breadcrumb pageName="Sign Up" />
         <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
           <div className="flex flex-wrap items-center">
@@ -44,7 +45,7 @@ const SignUpPage = () => {
             </div>
           </div>
         </div>
-      </DefaultLayout>
+      </AuthLayout>
   );
 };
 

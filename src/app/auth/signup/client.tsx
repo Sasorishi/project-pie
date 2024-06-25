@@ -29,7 +29,7 @@ const ClientComponent = () => {
             });
             setSuccess(true);
             setTimeout(() => {
-                router.push('/profile');
+                router.push('/auth/signin');
             }, 2000);
         } catch (error) {
             setError('Error signing up. Please try again.');
