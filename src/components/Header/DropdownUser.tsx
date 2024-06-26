@@ -3,7 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { signOut } from "firebase/auth";
 import { useRouter } from 'next/navigation';
-import { auth } from "@/firebase/firebaseConfig"; 
+import { auth } from "@/firebase/firebaseConfig";
+import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
+
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -16,6 +18,7 @@ const DropdownUser = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
+      openNotificationWithIcon('success', 'Déconnexion réussie', 'Vous êtes maintenant déconnecté.');
       router.push('/'); // Redirige vers la page d'accueil
     } catch (error) {
       console.error("Error signing out:", error);

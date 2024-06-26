@@ -18,32 +18,45 @@ const ClientComponent = () => {
 
     const handleSignUp = async (e: React.FormEvent) => {
         e.preventDefault();
+        console.log('Form submitted');
         setError('');
         setSuccess(false);
 
         if (password.length < 8) {
             setError('Password must be at least 8 characters long.');
             openNotificationWithIcon('error', 'Weak Password', 'Password must be at least 8 characters long.');
+            console.log('Password too short');
             return;
         }
 
         try {
+            console.log('Attempting to create user');
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            console.log('User created');
             const user = userCredential.user;
+
+            console.log('Setting user document in Firestore');
             await setDoc(doc(firestore, 'users', user.uid), {
                 fullName,
                 email: user.email,
                 createdAt: new Date()
             });
+            console.log('User document set in Firestore');
+
             setSuccess(true);
+            console.log('Before notification');
             openNotificationWithIcon('success', 'Registration Successful', 'Your account has been created.');
+            console.log('After notification');
             setTimeout(() => {
+                console.log('Before redirect');
                 router.push('/auth/signin');
-            }, 2000);
+                console.log('Redirecting to /auth/signin');
+            }, 2000); // Delay for notification to be shown
         } catch (error) {
             setError('Error signing up. Please try again.');
             openNotificationWithIcon('error', 'Registration Error', 'Error signing up. Please try again.');
             console.error("Error signing up:", error);
+            console.log('Error:', error);
         }
     };
 
@@ -115,12 +128,6 @@ const ClientComponent = () => {
                 />
             </div>
 
-            {error && (
-                <div className="mt-6 text-center text-red-600">
-                    {error}
-                </div>
-            )}
-
             <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
                 <span>
                 {/* Google Sign Up SVG */}
@@ -140,4 +147,4 @@ const ClientComponent = () => {
     );
 };
 
-export default ClientComponent
+export default ClientComponent;
