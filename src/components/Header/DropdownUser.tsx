@@ -1,12 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { signOut } from "firebase/auth";
+import { useRouter } from 'next/navigation';
+import { auth } from "@/firebase/firebaseConfig"; 
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
+  const router = useRouter();
+
+  // Fonction de déconnexion
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      router.push('/'); // Redirige vers la page d'accueil
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
 
   // close on click outside
   useEffect(() => {
@@ -161,7 +175,7 @@ const DropdownUser = () => {
             </Link>
           </li>
         </ul>
-        <button className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+        <button onClick={ handleLogout } className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
           <svg
             className="fill-current"
             width="22"

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { auth, firestore } from '@/firebase/firebaseConfig';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from 'firebase/firestore';
+import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
 
 const ClientComponent = () => {
     const [email, setEmail] = useState('');
@@ -19,6 +20,13 @@ const ClientComponent = () => {
         e.preventDefault();
         setError('');
         setSuccess(false);
+
+        if (password.length < 8) {
+            setError('Password must be at least 8 characters long.');
+            openNotificationWithIcon('error', 'Weak Password', 'Password must be at least 8 characters long.');
+            return;
+        }
+
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
@@ -28,11 +36,13 @@ const ClientComponent = () => {
                 createdAt: new Date()
             });
             setSuccess(true);
+            openNotificationWithIcon('success', 'Registration Successful', 'Your account has been created.');
             setTimeout(() => {
                 router.push('/auth/signin');
             }, 2000);
         } catch (error) {
             setError('Error signing up. Please try again.');
+            openNotificationWithIcon('error', 'Registration Error', 'Error signing up. Please try again.');
             console.error("Error signing up:", error);
         }
     };
@@ -105,10 +115,16 @@ const ClientComponent = () => {
                 />
             </div>
 
+            {error && (
+                <div className="mt-6 text-center text-red-600">
+                    {error}
+                </div>
+            )}
+
             <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
-        <span>
-          {/* Google Sign Up SVG */}
-        </span>
+                <span>
+                {/* Google Sign Up SVG */}
+                </span>
                 Sign up with Google
             </button>
 
@@ -124,4 +140,4 @@ const ClientComponent = () => {
     );
 };
 
-export default ClientComponent;
+export default ClientComponent

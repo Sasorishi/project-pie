@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '@/firebase/firebaseConfig';
+import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
 
 const ClientSignIn = () => {
     const [email, setEmail] = useState('');
@@ -16,9 +17,11 @@ const ClientSignIn = () => {
         setError('');
         try {
             await signInWithEmailAndPassword(auth, email, password);
+            openNotificationWithIcon('success', 'Connexion réussie', 'Vous êtes maintenant connecté.');
             router.push('/dashboard'); // Rediriger vers le tableau de bord ou la page d'accueil
         } catch (error) {
             setError('Failed to sign in. Please check your email and password and try again.');
+            openNotificationWithIcon('error', 'Erreur de connexion', 'Email ou mot de passe incorrect.');
             console.error("Error signing in:", error);
         }
     };

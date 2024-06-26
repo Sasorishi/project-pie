@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import { Metadata } from "next";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import dynamic from "next/dynamic";
 import AuthLayout from "@/components/Layouts/AuthLayout";
 
