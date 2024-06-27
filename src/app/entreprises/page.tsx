@@ -1,8 +1,8 @@
-import React from 'react';
-import EnteprisePage from '@/components/EntreprisePage';
+import React from "react";
+import CompanyPage from "@/components/CompanyPage";
 
 const Enteprises = () => {
-  return <EnteprisePage />;
+  return <CompanyPage />;
 };
 
 export default Enteprises;

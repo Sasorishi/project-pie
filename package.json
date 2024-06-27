@@ -13,6 +13,7 @@
     "antd": "^5.18.3",
     "apexcharts": "^3.45.2",
     "audit": "^0.0.6",
+    "axios": "^1.7.2",
     "chart.js": "^4.4.3",
     "firebase": "^10.12.2",
     "flatpickr": "^4.6.13",
