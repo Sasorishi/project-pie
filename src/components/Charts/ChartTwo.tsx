@@ -1,14 +1,13 @@
-import React from 'react';
-import { Bar } from 'react-chartjs-2';
 import {
-  Chart as ChartJS,
   BarElement,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
   Title,
   Tooltip,
-  Legend
 } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
   BarElement,
@@ -16,7 +15,7 @@ ChartJS.register(
   LinearScale,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const ChartTwo = () => {
@@ -24,7 +23,7 @@ const ChartTwo = () => {
     labels: ['NeuroTech AI', 'EcoDrive Innovations', 'Quantum Solutions'],
     datasets: [
       {
-        label: 'Montant de l\'investissement (€)',
+        label: "Montant de l'investissement (€)",
         data: [3000000, 1500000, 2500000],
         backgroundColor: [
           'rgba(75, 192, 192, 0.2)',

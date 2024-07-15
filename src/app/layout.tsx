@@ -1,10 +1,10 @@
-"use client";
-import "jsvectormap/dist/css/jsvectormap.css";
-import "flatpickr/dist/flatpickr.min.css";
-import "@/css/satoshi.css";
-import "@/css/style.css";
-import React, { useEffect, useState } from "react";
-import Loader from "@/components/common/Loader";
+'use client';
+import Loader from '@/components/common/Loader';
+import '@/css/satoshi.css';
+import '@/css/style.css';
+import 'flatpickr/dist/flatpickr.min.css';
+import 'jsvectormap/dist/css/jsvectormap.css';
+import React, { useEffect, useState } from 'react';
 
 export default function RootLayout({
   children,

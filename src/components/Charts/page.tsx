@@ -1,9 +1,8 @@
-"use client";
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import ChartOne from "@/components/Charts/ChartOne";
-import ChartTwo from "@/components/Charts/ChartTwo";
-import ChartThree from "@/components/Charts/ChartThree";
-import React from "react";
+'use client';
+import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
+import ChartOne from '@/components/Charts/ChartOne';
+import ChartThree from '@/components/Charts/ChartThree';
+import ChartTwo from '@/components/Charts/ChartTwo';
 
 const Chart = () => {
   return (

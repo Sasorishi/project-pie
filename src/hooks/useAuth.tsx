@@ -1,14 +1,14 @@
 "use client";
 
+import { auth } from "@/firebase/firebaseConfig";
+import { User, onAuthStateChanged } from "firebase/auth";
 import {
-  useState,
-  useEffect,
+  ReactNode,
   createContext,
   useContext,
-  ReactNode,
+  useEffect,
+  useState,
 } from "react";
-import { onAuthStateChanged, User } from "firebase/auth";
-import { auth } from "@/firebase/firebaseConfig";
 
 interface AuthContextType {
   user: User | null;
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       console.log("Auth state changed:", user); // Ajout de console log
       setUser(user);
-      setLoading(false);
+      setLoading(false); // Ceci doit être appelé une fois l'état utilisateur déterminé
     });
 
     return () => unsubscribe();

@@ -1,4 +1,3 @@
-import React from 'react';
 import EnteprisePage from '@/components/EntreprisePage';
 
 const Enteprises = () => {

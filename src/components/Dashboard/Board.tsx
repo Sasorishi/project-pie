@@ -1,20 +1,22 @@
-"use client";
-
-import React from "react";
+'use client';
 
 // Composants de visualisation
-import ChartOne from "../Charts/ChartOne";  // Chart de la performance financière
-import ChartTwo from "../Charts/ChartTwo";  // Chart des investissements
-import ChartThree from "../Charts/ChartThree";  // Chart de la croissance des startups
-import MapOne from "../Maps/MapOne";  // Carte de la répartition géographique des startups
-import ChatCard from "../Chat/ChatCard";  // Carte de communication avec les startups
-import CardDataStats from "../CardDataStats";  // Cartes de statistiques
+import CardDataStats from '../CardDataStats'; // Cartes de statistiques
+import ChartOne from '../Charts/ChartOne'; // Chart de la performance financière
+import ChartThree from '../Charts/ChartThree'; // Chart de la croissance des startups
+import ChartTwo from '../Charts/ChartTwo'; // Chart des investissements
+import MapOne from '../Maps/MapOne'; // Carte de la répartition géographique des startups
 
 const DashboardPage = () => {
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        <CardDataStats title="Total des Entreprises" total="12" rate="5%" levelUp>
+        <CardDataStats
+          title="Total des Entreprises"
+          total="12"
+          rate="5%"
+          levelUp
+        >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -33,7 +35,12 @@ const DashboardPage = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total des Investissements" total="8.7M€" rate="3.5%" levelUp>
+        <CardDataStats
+          title="Total des Investissements"
+          total="8.7M€"
+          rate="3.5%"
+          levelUp
+        >
           <svg
             className="fill-primary dark:fill-white"
             width="20"
@@ -56,7 +63,12 @@ const DashboardPage = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Croissance Moyenne" total="7.8%" rate="1.4%" levelUp>
+        <CardDataStats
+          title="Croissance Moyenne"
+          total="7.8%"
+          rate="1.4%"
+          levelUp
+        >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -75,7 +87,12 @@ const DashboardPage = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Interactions" total="1.234" rate="0.95%" levelDown>
+        <CardDataStats
+          title="Interactions"
+          total="1.234"
+          rate="0.95%"
+          levelDown
+        >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
