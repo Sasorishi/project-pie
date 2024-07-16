@@ -1,78 +1,66 @@
-"use client";
+'use client';
 
-import { openNotificationWithIcon } from "@/components/Notification/NotifAlert";
-import { auth, firestore } from "@/firebase/firebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
+import { auth, firestore } from '@/firebase/firebaseConfig';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 const ClientComponent = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const router = useRouter();
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted");
-    setError("");
+    setError('');
     setSuccess(false);
 
     if (password.length < 8) {
-      setError("Password must be at least 8 characters long.");
+      setError('Password must be at least 8 characters long.');
       openNotificationWithIcon(
-        "error",
-        "Weak Password",
-        "Password must be at least 8 characters long.",
+        'error',
+        'Weak Password',
+        'Password must be at least 8 characters long.',
       );
-      console.log("Password too short");
       return;
     }
 
     try {
-      console.log("Attempting to create user");
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password,
       );
-      console.log("User created");
       const user = userCredential.user;
 
-      console.log("Setting user document in Firestore");
-      await setDoc(doc(firestore, "users", user.uid), {
+      await setDoc(doc(firestore, 'users', user.uid), {
         fullName,
         email: user.email,
         createdAt: new Date(),
       });
-      console.log("User document set in Firestore");
 
       setSuccess(true);
-      console.log("Before notification");
       openNotificationWithIcon(
-        "success",
-        "Registration Successful",
-        "Your account has been created.",
+        'success',
+        'Registration Successful',
+        'Your account has been created.',
       );
-      console.log("After notification");
       setTimeout(() => {
-        console.log("Before redirect");
-        router.push("/auth/signin");
-        console.log("Redirecting to /auth/signin");
+        router.push('/auth/signin');
       }, 2000); // Delay for notification to be shown
     } catch (error) {
-      setError("Error signing up. Please try again.");
+      setError('Error signing up. Please try again.');
       openNotificationWithIcon(
-        "error",
-        "Registration Error",
-        "Error signing up. Please try again.",
+        'error',
+        'Registration Error',
+        'Error signing up. Please try again.',
       );
-      console.error("Error signing up:", error);
-      console.log("Error:", error);
     }
   };
 
@@ -87,7 +75,7 @@ const ClientComponent = () => {
             type="text"
             placeholder="Entrer votre nom complet"
             value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            onChange={e => setFullName(e.target.value)}
             className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
           />
         </div>
@@ -102,7 +90,7 @@ const ClientComponent = () => {
             type="email"
             placeholder="Entrer votre mail"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
           />
         </div>
@@ -117,7 +105,7 @@ const ClientComponent = () => {
             type="password"
             placeholder="Entrer votre mot de passe"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
           />
         </div>
@@ -151,7 +139,7 @@ const ClientComponent = () => {
 
       <div className="mt-6 text-center">
         <p>
-          Vous avez déjà un compte?{" "}
+          Vous avez déjà un compte?{' '}
           <Link href="/auth/signin" className="text-primary">
             Se connecter
           </Link>

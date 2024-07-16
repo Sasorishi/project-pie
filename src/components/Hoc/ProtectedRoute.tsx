@@ -15,17 +15,20 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   useEffect(() => {
     if (!loading) {
       if (!user) {
-        console.log('User is not authenticated, redirecting...');
         router.push('/auth/signin');
       }
     }
   }, [user, loading, router]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
-  return children;
+  if (user && !loading) {
+    return <>{children}</>;
+  }
+
+  return null;
 };
 
 export default ProtectedRoute;

@@ -1,7 +1,9 @@
 import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
+import ProtectedRoute from '@/components/Hoc/ProtectedRoute';
 
 import DefaultLayout from '@/components/Layouts/DefaultLayout';
 import TableInvestement from '@/components/Tables/TableInvestment';
+import { AuthProvider } from '@/hooks/useAuth';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,13 +14,16 @@ export const metadata: Metadata = {
 
 const TablesPage = () => {
   return (
-    <DefaultLayout>
-      <Breadcrumb pageName="Enteprises" />
-
-      <div className="flex flex-col gap-10">
-        <TableInvestement />
-      </div>
-    </DefaultLayout>
+    <AuthProvider>
+      <ProtectedRoute>
+        <DefaultLayout>
+          <Breadcrumb pageName="Enteprises" />
+          <div className="flex flex-col gap-10">
+            <TableInvestement />
+          </div>
+        </DefaultLayout>
+      </ProtectedRoute>
+    </AuthProvider>
   );
 };
 

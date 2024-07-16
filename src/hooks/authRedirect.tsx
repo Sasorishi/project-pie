@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useAuth } from "@/hooks/useAuth";
-import { useRouter } from "next/navigation";
-import { ReactNode, useEffect } from "react";
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
+import { ReactNode, useEffect } from 'react';
 
 interface AuthRedirectProps {
   children: ReactNode;
@@ -14,12 +14,19 @@ const AuthRedirect = ({ children }: AuthRedirectProps) => {
 
   useEffect(() => {
     if (!loading && user) {
-      console.log("User is authenticated, redirecting...");
-      router.push("/dashboard");
+      router.push('/dashboard');
     }
   }, [user, loading, router]);
 
-  return <>{children}</>;
+  if (loading) {
+    return <div></div>;
+  }
+
+  if (!user && !loading) {
+    return <>{children}</>;
+  }
+
+  return null;
 };
 
 export default AuthRedirect;
