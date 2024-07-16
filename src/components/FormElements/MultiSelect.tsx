@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 
 interface Option {
   value: string;
@@ -27,7 +27,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
           newOptions.push({
             value: select.options[i].value,
             text: select.options[i].innerText,
-            selected: select.options[i].hasAttribute("selected"),
+            selected: select.options[i].hasAttribute('selected'),
           });
         }
         setOptions(newOptions);
@@ -56,7 +56,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
       const selectedIndex = selected.indexOf(index);
       if (selectedIndex !== -1) {
         newOptions[index].selected = false;
-        setSelected(selected.filter((i) => i !== index));
+        setSelected(selected.filter(i => i !== index));
       }
     }
 
@@ -69,13 +69,13 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
 
     if (selectedIndex !== -1) {
       newOptions[index].selected = false;
-      setSelected(selected.filter((i) => i !== index));
+      setSelected(selected.filter(i => i !== index));
       setOptions(newOptions);
     }
   };
 
   const selectedValues = () => {
-    return selected.map((option) => options[option].value);
+    return selected.map(option => options[option].value);
   };
 
   useEffect(() => {
@@ -89,8 +89,8 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
         return;
       setShow(false);
     };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
   });
 
   return (
@@ -113,7 +113,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
               <div ref={trigger} onClick={open} className="w-full">
                 <div className="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
                   <div className="flex flex-auto flex-wrap gap-3">
-                    {selected.map((index) => (
+                    {selected.map(index => (
                       <div
                         key={index}
                         className="my-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray px-2.5 py-1.5 text-sm font-medium dark:border-strokedark dark:bg-white/30"
@@ -185,7 +185,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
               <div className="w-full px-4">
                 <div
                   className={`max-h-select absolute left-0 top-full z-40 w-full overflow-y-auto rounded bg-white shadow dark:bg-form-input ${
-                    isOpen() ? "" : "hidden"
+                    isOpen() ? '' : 'hidden'
                   }`}
                   ref={dropdownRef}
                   onFocus={() => setShow(true)}
@@ -196,11 +196,11 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                       <div key={index}>
                         <div
                           className="w-full cursor-pointer rounded-t border-b border-stroke hover:bg-primary/5 dark:border-form-strokedark"
-                          onClick={(event) => select(index, event)}
+                          onClick={event => select(index, event)}
                         >
                           <div
                             className={`relative flex w-full items-center border-l-2 border-transparent p-2 pl-2 ${
-                              option.selected ? "border-primary" : ""
+                              option.selected ? 'border-primary' : ''
                             }`}
                           >
                             <div className="flex w-full items-center">

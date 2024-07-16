@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -5,19 +6,16 @@ import { ReactNode, useEffect } from 'react';
 
 import { useAuth } from '@/hooks/useAuth';
 
-interface ProtectedRouteProps {
+interface AuthRedirectProps {
   children: ReactNode;
 }
 
-const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+const AuthRedirect = ({ children }: AuthRedirectProps) => {
   const { user, loading } = useAuth();
   const router = useRouter();
-
   useEffect(() => {
-    if (!loading) {
-      if (!user) {
-        router.push('/auth/signin');
-      }
+    if (!loading && user) {
+      router.push('/dashboard');
     }
   }, [user, loading, router]);
 
@@ -25,11 +23,11 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     return <div></div>;
   }
 
-  if (user && !loading) {
+  if (!user && !loading) {
     return <>{children}</>;
   }
 
   return null;
 };
 
-export default ProtectedRoute;
+export default AuthRedirect;

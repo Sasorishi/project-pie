@@ -1,15 +1,14 @@
-import React from 'react';
-import { Line } from 'react-chartjs-2';
 import {
+  CategoryScale,
   Chart as ChartJS,
+  Legend,
+  LinearScale,
   LineElement,
   PointElement,
-  LinearScale,
-  CategoryScale,
   Title,
   Tooltip,
-  Legend
 } from 'chart.js';
+import { Line } from 'react-chartjs-2';
 
 ChartJS.register(
   LineElement,
@@ -18,23 +17,42 @@ ChartJS.register(
   CategoryScale,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const ChartOne = () => {
   const data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ],
     datasets: [
       {
         label: 'Revenus',
-        data: [12000, 19000, 3000, 5000, 2000, 3000, 15000, 22000, 19000, 23000, 27000, 30000],
+        data: [
+          12000, 19000, 3000, 5000, 2000, 3000, 15000, 22000, 19000, 23000,
+          27000, 30000,
+        ],
         fill: false,
         backgroundColor: 'rgb(75, 192, 192)',
         borderColor: 'rgba(75, 192, 192, 0.2)',
       },
       {
         label: 'Dépenses',
-        data: [8000, 14000, 2000, 4000, 1500, 2500, 10000, 18000, 16000, 20000, 24000, 27000],
+        data: [
+          8000, 14000, 2000, 4000, 1500, 2500, 10000, 18000, 16000, 20000,
+          24000, 27000,
+        ],
         fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgba(255, 99, 132, 0.2)',
