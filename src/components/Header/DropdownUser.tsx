@@ -1,10 +1,11 @@
-import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
-import { auth } from '@/firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+
+import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
+import { auth } from '@/firebase/firebaseConfig';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

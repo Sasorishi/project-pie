@@ -1,11 +1,12 @@
 // src/app/auth/signup/page.tsx
 
-import AuthRedirect from "@/hooks/authRedirect";
-import { AuthProvider } from "@/hooks/useAuth";
-import Image from "next/image";
-import Link from "next/link";
-import ClientComponent from "./client";
-import importDarkLogo from "/public/images/icon/logo-dark.png";
+import Image from 'next/image';
+import Link from 'next/link';
+
+import AuthRedirect from '@/hooks/authRedirect';
+import { AuthProvider } from '@/hooks/useAuth';
+
+import ClientComponent from './client';
 
 const SignUpPage = () => {
   return (
@@ -19,14 +20,14 @@ const SignUpPage = () => {
                   <Link className="mb-5.5 inline-block" href="/">
                     <Image
                       className="hidden dark:block"
-                      src={"/images/logo/logo.svg"}
+                      src={'/images/logo/logo.svg'}
                       alt="Logo"
                       width={176}
                       height={32}
                     />
                     <Image
                       className="dark:hidden"
-                      src={importDarkLogo.src}
+                      src={'/images/icon/logo-dark.png'}
                       alt="Logo"
                       width={280}
                       height={60}

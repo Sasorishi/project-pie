@@ -1,16 +1,15 @@
-import AuthRedirect from "@/hooks/authRedirect";
-import { AuthProvider } from "@/hooks/useAuth";
-import { Metadata } from "next";
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import Link from "next/link";
-import importDarkLogo from "/public/images/icon/logo-dark.png";
+import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const ClientSignIn = dynamic(() => import("./client"), { ssr: false });
+import AuthRedirect from '@/hooks/authRedirect';
+import { AuthProvider } from '@/hooks/useAuth';
+const ClientSignIn = dynamic(() => import('./client'), { ssr: false });
 
 export const metadata: Metadata = {
-  title: "Next.js SignIn Page | TailAdmin - Next.js Dashboard Template",
-  description: "This is Next.js Signin Page TailAdmin Dashboard Template",
+  title: 'Next.js SignIn Page | TailAdmin - Next.js Dashboard Template',
+  description: 'This is Next.js Signin Page TailAdmin Dashboard Template',
 };
 
 const SignIn = () => {
@@ -25,14 +24,14 @@ const SignIn = () => {
                   <Link className="mb-5.5 inline-block" href="/">
                     <Image
                       className="hidden dark:block"
-                      src={"/images/logo/logo.svg"}
+                      src={'/images/logo/logo.svg'}
                       alt="Logo"
                       width={280}
                       height={60}
                     />
                     <Image
                       className="dark:hidden"
-                      src={importDarkLogo.src}
+                      src={'/images/icon/logo-dark.png'}
                       alt="Logo"
                       width={280}
                       height={60}
@@ -62,7 +61,7 @@ const SignIn = () => {
                   </button>
                   <div className="mt-6 text-center">
                     <p>
-                      Vous n'avez pas de compte?{" "}
+                      Vous n'avez pas de compte?{' '}
                       <Link href="/auth/signup" className="text-primary">
                         Créer un compte
                       </Link>

@@ -1,10 +1,10 @@
+import { Metadata } from 'next';
+
 import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
 import ProtectedRoute from '@/components/Hoc/ProtectedRoute';
-
 import DefaultLayout from '@/components/Layouts/DefaultLayout';
 import TableInvestement from '@/components/Tables/TableInvestment';
 import { AuthProvider } from '@/hooks/useAuth';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Next.js Tables | TailAdmin - Next.js Dashboard Template',

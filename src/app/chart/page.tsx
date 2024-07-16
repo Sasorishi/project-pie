@@ -1,6 +1,7 @@
+import { Metadata } from 'next';
+
 import Chart from '@/components/Charts/page';
 import DefaultLayout from '@/components/Layouts/DefaultLayout';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Next.js Chart | TailAdmin - Next.js Dashboard Template',

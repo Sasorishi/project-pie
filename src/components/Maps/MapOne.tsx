@@ -1,5 +1,6 @@
-import L, { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+
+import L, { LatLngTuple } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 import customMarkerIcon from '/public/images/icon/map-marker.svg'; // Chemin de l'image

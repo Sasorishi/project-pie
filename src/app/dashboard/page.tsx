@@ -1,8 +1,9 @@
+import { Metadata } from 'next';
+
 import ECommerce from '@/components/Dashboard/Board';
 import ProtectedRoute from '@/components/Hoc/ProtectedRoute';
 import DefaultLayout from '@/components/Layouts/DefaultLayout';
 import { AuthProvider } from '@/hooks/useAuth';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Project PIE Dashboard',

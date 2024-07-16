@@ -1,6 +1,7 @@
-import { Chat } from '@/types/chat';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { Chat } from '@/types/chat';
 
 const chatData: Chat[] = [
   {

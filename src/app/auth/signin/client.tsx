@@ -1,16 +1,18 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // src/app/auth/signin/ClientSignIn.tsx
 'use client';
 
-import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
-import { auth } from '@/firebase/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
+import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
+import { auth } from '@/firebase/firebaseConfig';
+
 const ClientSignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [, setError] = useState('');
   const router = useRouter();
 
   const handleSignIn = async (e: React.FormEvent) => {

@@ -1,6 +1,7 @@
+import { Metadata } from 'next';
+
 import FormElements from '@/components/FormElements';
 import DefaultLayout from '@/components/Layouts/DefaultLayout';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Next.js Form Elements | TailAdmin - Next.js Dashboard Template',

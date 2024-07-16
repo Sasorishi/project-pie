@@ -1,7 +1,8 @@
 'use client';
 
-import StartupDetails from '@/components/StartupDetails';
 import { useSearchParams } from 'next/navigation';
+
+import StartupDetails from '@/components/StartupDetails';
 
 const entreprises = [
   {

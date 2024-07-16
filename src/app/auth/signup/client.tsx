@@ -1,19 +1,21 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 'use client';
 
-import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
-import { auth, firestore } from '@/firebase/firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
+import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
+import { auth, firestore } from '@/firebase/firebaseConfig';
+
 const ClientComponent = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [, setError] = useState('');
+  const [, setSuccess] = useState(false);
   const router = useRouter();
 
   const handleSignUp = async (e: React.FormEvent) => {

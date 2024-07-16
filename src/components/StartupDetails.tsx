@@ -1,8 +1,9 @@
-import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
-import DefaultLayout from '@/components/Layouts/DefaultLayout';
 import { ApexOptions } from 'apexcharts';
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
+
+import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
+import DefaultLayout from '@/components/Layouts/DefaultLayout';
 
 interface GrowthData {
   funding: number[];
