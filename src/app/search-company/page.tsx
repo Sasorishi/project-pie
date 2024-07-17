@@ -1,12 +1,11 @@
 'use client';
 
-import { Spin } from 'antd';
+import { notification, Spin } from 'antd';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 import ProtectedRoute from '@/components/Hoc/ProtectedRoute';
 import DefaultLayout from '@/components/Layouts/DefaultLayout';
-import { openNotificationWithIcon } from '@/components/Notification/NotifAlert';
 import ActivitiesCard from '@/components/SearchCompany/ActivitiesCard';
 import BeneficiariesCard from '@/components/SearchCompany/BeneficiariesCard';
 import CompanyInfoCard from '@/components/SearchCompany/CompanyInfoCard';
@@ -27,6 +26,17 @@ const getValue = (field: any, fallback: any) => {
   return isEmptyObject(field) ? fallback : field;
 };
 
+const openNotificationWithIcon = (
+  type: 'success' | 'info' | 'warning' | 'error',
+  message: string,
+  description: string,
+): void => {
+  notification[type]({
+    message,
+    description,
+  });
+};
+
 const CompanyDetails = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -35,6 +45,7 @@ const CompanyDetails = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [percent, setPercent] = useState<number>(0);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const hasFetchedRef = useRef<string | null>(null);
 
   useEffect(() => {
     const fetchCompanyDetails = async () => {
@@ -150,7 +161,6 @@ const CompanyDetails = () => {
             setLoading(false);
           }, 100);
         } catch (error) {
-          console.log(true);
           clearInterval(timerRef.current);
           setPercent(100);
           setTimeout(() => {
@@ -166,8 +176,10 @@ const CompanyDetails = () => {
       }
     };
 
-    fetchCompanyDetails();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (hasFetchedRef.current !== siren) {
+      fetchCompanyDetails();
+      hasFetchedRef.current = siren;
+    }
   }, [siren]);
 
   if (!company || loading) {
