@@ -5,6 +5,15 @@ const FinancesCard = ({
   capital: any;
   currency: string;
 }) => {
+  const formattedCapital =
+    capital !== null
+      ? new Intl.NumberFormat('fr-FR', {
+          style: 'decimal',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }).format(capital)
+      : 'Non spécifié';
+
   return (
     <div className="mt-5 bg-white shadow overflow-hidden sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
@@ -22,7 +31,7 @@ const FinancesCard = ({
               Montant du capital
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              {capital !== null ? capital : 'Non spécifié'}
+              {formattedCapital}
             </dd>
             <dt className="text-sm font-medium text-gray-500">
               Devise du capital
