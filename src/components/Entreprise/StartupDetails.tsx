@@ -7,7 +7,7 @@ import { doc, setDoc, deleteDoc, getDoc } from 'firebase/firestore';
 import { firestore } from '@/firebase/firebaseConfig';
 import { useAuth } from '@/hooks/useAuth';
 import { Button, notification } from 'antd';
-import { HeartOutlined, HeartFilled } from '@ant-design/icons';
+import { WalletOutlined, WalletFilled } from '@ant-design/icons';
 
 interface GrowthData {
   funding: number[];
@@ -169,7 +169,13 @@ const StartupDetails: React.FC<StartupDetailsProps> = ({ startup }) => {
             <Button
               onClick={toggleFavorite}
               type="text"
-              icon={isFavorite ? <HeartFilled style={{ color: 'red' }} /> : <HeartOutlined />}
+              icon={
+                isFavorite ? (
+                  <WalletFilled style={{ color: '#1c2434' }} />
+                ) : (
+                  <WalletOutlined />
+                )
+              }
             >
               {isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
             </Button>
