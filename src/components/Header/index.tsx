@@ -20,6 +20,17 @@ const Header = (props: {
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+    setSiren(value.slice(0, 9)); // Limit to 9 characters
+  };
+
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    const pasteData = e.clipboardData.getData('Text').replace(/\D/g, '');
+    setSiren(pasteData.slice(0, 9)); // Limit to 9 characters
+    e.preventDefault();
+  };
+
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
@@ -106,7 +117,9 @@ const Header = (props: {
                 type="text"
                 placeholder="Saisir un siren..."
                 value={siren}
-                onChange={e => setSiren(e.target.value)}
+                maxLength={9}
+                onChange={handleInputChange}
+                onPaste={handlePaste}
                 className="w-full bg-transparent pl-9 pr-4 font-medium focus:outline-none xl:w-125"
               />
             </div>

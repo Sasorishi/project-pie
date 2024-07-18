@@ -1,5 +1,6 @@
-import { signOut } from 'firebase/auth';
-import Image from 'next/image';
+import { UserOutlined } from '@ant-design/icons';
+import { Avatar } from 'antd';
+import { signOut, User } from 'firebase/auth';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -9,6 +10,7 @@ import { auth } from '@/firebase/firebaseConfig';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
@@ -23,7 +25,7 @@ const DropdownUser = () => {
         'Déconnexion réussie',
         'Vous êtes maintenant déconnecté.',
       );
-      router.push('/'); // Redirige vers la page d'accueil
+      router.push('/');
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -55,6 +57,18 @@ const DropdownUser = () => {
     return () => document.removeEventListener('keydown', keyHandler);
   });
 
+  // get the currently signed-in user
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(currentUser => {
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="relative">
       <Link
@@ -65,22 +79,13 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {user ? user.email : 'Utilisateur'}
           </span>
           <span className="block text-xs">analyste financier</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
-          <Image
-            width={112}
-            height={112}
-            src={'/images/user/user-01.png'}
-            style={{
-              width: 'auto',
-              height: 'auto',
-            }}
-            alt="User"
-          />
+          <Avatar size={50} icon={<UserOutlined />} />
         </span>
 
         <svg
