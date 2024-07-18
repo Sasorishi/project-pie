@@ -23,9 +23,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("AuthProvider mounted");
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("onAuthStateChanged triggered");
       setUser(user);
       setLoading(false); // Ceci doit être appelé une fois l'état utilisateur déterminé
     });
