@@ -1,3 +1,5 @@
+import { toCamelCase } from '@/utils/textUtils';
+
 const ActivitiesCard = ({ activities }: { activities: any[] }) => {
   return (
     <div className="mt-5 bg-white shadow overflow-hidden sm:rounded-lg">
@@ -37,7 +39,7 @@ const ActivitiesCard = ({ activities }: { activities: any[] }) => {
                       Forme d'exercice
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {activite.formeExercice}
+                      {toCamelCase(activite.formeExercice)}
                     </dd>
                   </>
                 )}
