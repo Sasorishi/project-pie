@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 
-import StartupDetails from '@/components/StartupDetails';
+import StartupDetails from '@/components/Entreprise/StartupDetails';
 
 const entreprises = [
   {

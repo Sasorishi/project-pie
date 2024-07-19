@@ -1,7 +1,13 @@
-import EnteprisePage from '@/components/EntreprisePage';
+import EnteprisePage from '@/components/Entreprise/EntreprisePage';
+import ProtectedRoute from '@/components/Hoc/ProtectedRoute';
+import { AuthProvider } from '@/hooks/useAuth';
 
-const Enteprises = () => {
-  return <EnteprisePage />;
-};
-
-export default Enteprises;
+export default function Dashboard() {
+  return (
+    <AuthProvider>
+      <ProtectedRoute>
+        <EnteprisePage />
+      </ProtectedRoute>
+    </AuthProvider>
+  );
+}
