@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b381f351-098d-4490-b638-f16ae4dea788" name="Changes" comment="" />
+    <list default="true" id="b381f351-098d-4490-b638-f16ae4dea788" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Entreprise/StartupDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Entreprise/StartupDetails.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +46,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "feat/add-fav",
     "last_opened_file_path": "/Users/raphaeltruong/Documents/project-pie",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
